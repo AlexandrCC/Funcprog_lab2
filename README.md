@@ -79,3 +79,35 @@
      (prefix-p sublst (cdr lst)))
     (t (sublist-after-p (cdr lst) elem sublst))))
 ```
+
+### Тестові набори та утиліти
+
+```lisp
+(defun check-sublist-after-p (name lst elem sublst expected)
+  (format t "~:[FAILED~;passed~]... ~a~%"
+          (equal (sublist-after-p lst elem sublst) expected)
+          name))
+
+(defun test-sublist-after-p ()
+  (check-sublist-after-p "after: приклад T"
+    '(1 a 2 b 3 c 4 d) 'b '(3 c) t)
+  (check-sublist-after-p "after: приклад NIL"
+    '(1 a 2 b 3 c 4 d) 'b '(3 c d) nil)
+  (check-sublist-after-p "after: елемент на початку"
+    '(x 1 2 y 3 4) 'x '(1 2) t)
+  (check-sublist-after-p "after: елемент відсутній"
+    '(x 1 2 y 3 4) 'z '(3 4) nil))
+```
+
+### Тестування
+```lisp
+(defun run-all-tests ()
+  (format t "=== Тести merge-lists-pairs ===~%")
+  (test-merge-lists-pairs)
+  (format t "=== Тести sublist-after-p ===~%")
+  (test-sublist-after-p)
+  (values))
+
+;; CL-USER> (load "lab2_variant7.lisp")
+;; CL-USER> (run-all-tests)
+```
