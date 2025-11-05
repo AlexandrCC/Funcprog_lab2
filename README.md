@@ -111,3 +111,19 @@
 ;; CL-USER> (load "lab2_variant7.lisp")
 ;; CL-USER> (run-all-tests)
 ```
+
+0] (load "lab2.lisp")          
+
+T
+0] (run-all-tests)
+=== Тести merge-lists-pairs ===
+passed... pairs: базовий приклад
+passed... pairs: другий список довший
+passed... pairs: перший список порожній
+=== Тести sublist-after-p ===
+passed... after: приклад T
+passed... after: приклад NIL
+passed... after: елемент на початку
+passed... after: елемент відсутній
+
+0]
