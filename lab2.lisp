@@ -70,5 +70,5 @@
   (values))
 
 ;; Підказка: для запуску тестів у REPL
-;; CL-USER> (load "lab2_variant7.lisp")
+;; CL-USER> (load "lab2.lisp")
 ;; CL-USER> (run-all-tests)
