@@ -37,3 +37,45 @@
     (t (cons (list (car list1) (car list2))
              (merge-lists-pairs (cdr list1) (cdr list2))))))
 ```
+
+### Тестові набори та утиліти
+
+```lisp
+(defun check-merge-lists-pairs (name l1 l2 expected)
+  (format t "~:[FAILED~;passed~]... ~a~%"
+          (equal (merge-lists-pairs l1 l2) expected)
+          name))
+
+(defun test-merge-lists-pairs ()
+  (check-merge-lists-pairs "pairs: базовий приклад"
+    '(1 2 3 4 5) '(a b c d)
+    '((1 A) (2 B) (3 C) (4 D) (5)))
+  (check-merge-lists-pairs "pairs: другий список довший"
+    '(x y) '(1 2 3)
+    '((X 1) (Y 2)))
+  (check-merge-lists-pairs "pairs: перший список порожній"
+    nil '(a b)
+    nil))
+```
+
+## Лістинг функції sublist-after-p
+
+```lisp
+(defun prefix-p (lst1 lst2)
+  "Повертає T, якщо lst1 є префіксом lst2."
+  (cond
+    ((null lst1) t)
+    ((null lst2) nil)
+    ((equal (car lst1) (car lst2))
+     (prefix-p (cdr lst1) (cdr lst2)))
+    (t nil)))
+
+(defun sublist-after-p (lst elem sublst)
+  "Повертає T, якщо одразу після першого входження elem у lst
+   йде послідовність елементів sublst."
+  (cond
+    ((null lst) nil)
+    ((equal (car lst) elem)
+     (prefix-p sublst (cdr lst)))
+    (t (sublist-after-p (cdr lst) elem sublst))))
+```
