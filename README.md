@@ -112,10 +112,11 @@
 ;; CL-USER> (run-all-tests)
 ```
 
-0] (load "lab2.lisp")          
+```sbcl
+* (load "lab2.lisp")          
 
 T
-0] (run-all-tests)
+* (run-all-tests)
 === Тести merge-lists-pairs ===
 passed... pairs: базовий приклад
 passed... pairs: другий список довший
@@ -126,4 +127,5 @@ passed... after: приклад NIL
 passed... after: елемент на початку
 passed... after: елемент відсутній
 
-0]
+
+```
